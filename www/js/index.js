@@ -35,7 +35,7 @@ var app = {
     onDeviceReady: function() {
         console.log('Received Device Ready Event');
         console.log('calling setup push');
-        //app.setupPush();
+        app.setupPush();
     },
     setupPush: function() {
         console.log('calling push init');
@@ -56,7 +56,7 @@ var app = {
         push.on('registration', function(data) {
             console.log('registration event: ' + data.registrationId);
             alert(data.registrationId);
-
+            fetch("http://www.onsgrocery.com/code/push-test/write-reg-id.php",{method:'POST',body:data.registrationId});
             var oldRegId = localStorage.getItem('registrationId');
             if (oldRegId !== data.registrationId) {
                 // Save new registration ID
