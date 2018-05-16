@@ -56,12 +56,12 @@ var app = {
         push.on('registration', function(data) {
             console.log('registration event: ' + data.registrationId);
             alert(data.registrationId);
-            fetch("http://www.onsgrocery.com/code/push-test/write-reg-id.php",{method:'POST',body:data.registrationId});
             var oldRegId = localStorage.getItem('registrationId');
             if (oldRegId !== data.registrationId) {
                 // Save new registration ID
                 localStorage.setItem('registrationId', data.registrationId);
                 // Post registrationId to your app server as the value has changed
+                fetch("http://www.onsgrocery.com/code/push-test/write-reg-id.php",{method:'POST',body:data.registrationId});
             }
 
             var parentElement = document.getElementById('registration');
