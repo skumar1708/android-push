@@ -12,6 +12,9 @@
     },
     "phonegap-plugin-push": {
       "PACKAGE_NAME": "com.phonegap.helloworld"
+    },
+    "cordova-plugin-firebase": {
+      "PACKAGE_NAME": "org.myapp.sample"
     }
   },
   "dependent_plugins": {}
