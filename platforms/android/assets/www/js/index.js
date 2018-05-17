@@ -66,18 +66,18 @@ var app = {
         //     receivedElement.setAttribute('style', 'display:block;');
         //     document.getElementById("gcm_id").innerHTML = data.registrationId;
         // });
-        push.subscribe('allDevices', function() {
-            alert('successfully subscribed to topic allDevices');
-            var parentElement = document.getElementById('registration');
-            var listeningElement = parentElement.querySelector('.waiting');
-            var receivedElement = parentElement.querySelector('.received');
+        // push.subscribe('allDevices', function() {
+        //     alert('successfully subscribed to topic allDevices');
+        //     var parentElement = document.getElementById('registration');
+        //     var listeningElement = parentElement.querySelector('.waiting');
+        //     var receivedElement = parentElement.querySelector('.received');
 
-            listeningElement.setAttribute('style', 'display:none;');
-            receivedElement.setAttribute('style', 'display:block;');
-            document.getElementById("gcm_id").innerHTML = data.registrationId;
-         }, function(e) {
-            alert('Error: ' + e);
-         });
+        //     listeningElement.setAttribute('style', 'display:none;');
+        //     receivedElement.setAttribute('style', 'display:block;');
+        //     document.getElementById("gcm_id").innerHTML = data.registrationId;
+        //  }, function(e) {
+        //     alert('Error: ' + e);
+        //  });
         push.on('registration', function(data) {
             alert('registration event: ' + data.registrationId);
         });
