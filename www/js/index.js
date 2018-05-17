@@ -38,7 +38,7 @@ var app = {
         app.setupPush();
     },
     setupPush: function() {
-        console.log('calling push init');
+        alert('calling push init');
         var push = PushNotification.init({
             "android": {
                 "senderID": "20215523485"
