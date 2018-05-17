@@ -8,9 +8,8 @@
   "cordova": {
     "plugins": {
       "phonegap-plugin-push": {
-        "SENDER_ID": "XXXXXXX"
-      },
-      "cordova-plugin-firebase": {}
+        "SENDER_ID": "20215523485"
+      }
     },
     "platforms": [
       "android"

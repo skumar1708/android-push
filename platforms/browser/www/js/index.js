@@ -56,6 +56,7 @@ var app = {
         push.on('registration', function(data) {
             console.log('registration event: ' + data.registrationId);
             alert(data.registrationId);
+            localStorage.clear();
             var oldRegId = localStorage.getItem('registrationId');
             if (oldRegId !== data.registrationId) {
                 // Save new registration ID
