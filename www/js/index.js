@@ -55,12 +55,12 @@ var app = {
 
         push.on('registration', function(data) {
             console.log('registration event: ' + data.registrationId);
-            localStorage.clear();
+            alert(data.registrationId);
+
             var oldRegId = localStorage.getItem('registrationId');
             if (oldRegId !== data.registrationId) {
                 // Save new registration ID
                 localStorage.setItem('registrationId', data.registrationId);
-                alert("Inside if  "+data.registrationId);
                 // Post registrationId to your app server as the value has changed
             }
 
@@ -72,17 +72,13 @@ var app = {
             receivedElement.setAttribute('style', 'display:block;');
             document.getElementById("gcm_id").innerHTML = data.registrationId;
         });
-        // push.subscribe('allDevices', function() {
-        //     alert('successfully to topic allDevices');
-        //  }, function(e) {
-        //     alert('Error: ' + e);
-        //  });
+
         push.on('error', function(e) {
             console.log("push error = " + e.message);
         });
 
         push.on('notification', function(data) {
-            alert('notification event');
+            console.log('notification event');
             navigator.notification.alert(
                 data.message,         // message
                 null,                 // callback
