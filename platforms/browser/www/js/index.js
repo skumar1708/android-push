@@ -72,11 +72,11 @@ var app = {
             receivedElement.setAttribute('style', 'display:block;');
             document.getElementById("gcm_id").innerHTML = data.registrationId;
         });
-        push.subscribe('allDevices', function() {
-            alert('successfully to topic allDevices');
-         }, function(e) {
-            alert('Error: ' + e);
-         });
+        // push.subscribe('allDevices', function() {
+        //     alert('successfully to topic allDevices');
+        //  }, function(e) {
+        //     alert('Error: ' + e);
+        //  });
         push.on('error', function(e) {
             console.log("push error = " + e.message);
         });
