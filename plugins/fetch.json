@@ -10,12 +10,10 @@
   "phonegap-plugin-push": {
     "source": {
       "type": "registry",
-      "id": "phonegap-plugin-push@2.2.2"
+      "id": "phonegap-plugin-push@2.2.0"
     },
     "is_top_level": true,
-    "variables": {
-      "SENDER_ID": "20215523485"
-    }
+    "variables": {}
   },
   "cordova-plugin-firebase": {
     "source": {

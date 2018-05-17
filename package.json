@@ -9,17 +9,13 @@
     "plugins": {
       "phonegap-plugin-push": {
         "SENDER_ID": "20215523485"
-      },
-      "cordova-plugin-fetch": {}
+      }
     },
     "platforms": [
       "android"
     ]
   },
   "dependencies": {
-    "cordova-android": "^6.3.0",
-    "cordova-plugin-firebase": "^0.1.21",
-    "phonegap-plugin-push": "~1.8.0",
-    "cordova-plugin-fetch": "https://github.com/aporat/cordova-plugin-fetch.git"
+    "cordova-android": "^7.1.0"
   }
 }

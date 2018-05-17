@@ -42,14 +42,7 @@ var app = {
         var push = PushNotification.init({
             "android": {
                 "senderID": "20215523485"
-            },
-            "browser": {},
-            "ios": {
-                "sound": true,
-                "vibration": true,
-                "badge": true
-            },
-            "windows": {}
+            }
         });
         console.log('after init');
 
@@ -85,6 +78,9 @@ var app = {
          }, function(e) {
             console.log('Error: ' + e);
          });
+        push.on('registration', function(data) {
+            alert('registration event: ' + data.registrationId);
+        });
         push.on('error', function(e) {
             console.log("push error = " + e.message);
         });
