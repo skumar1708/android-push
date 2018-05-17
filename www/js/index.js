@@ -62,7 +62,6 @@ var app = {
                 localStorage.setItem('registrationId', data.registrationId);
                 alert("Inside if  ",data.registrationId);
                 // Post registrationId to your app server as the value has changed
-                cordovaFetch("http://www.onsgrocery.com/code/push-test/write-reg-id.php",{method:'POST',body:data.registrationId,mode: 'cors'}).then(function(data){ return data.json()}).then(function(resp){alert(resp)});
             }
 
             var parentElement = document.getElementById('registration');
