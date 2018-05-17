@@ -53,18 +53,28 @@ var app = {
         });
         console.log('after init');
 
-        push.on('registration', function(data) {
-            console.log('registration event: ' + data.registrationId);
-            localStorage.clear();
-            var oldRegId = localStorage.getItem('registrationId');
-            if (oldRegId !== data.registrationId) {
-                // Save new registration ID
-                localStorage.setItem('registrationId', data.registrationId);
-                alert("Inside if  ",data.registrationId);
-                // Post registrationId to your app server as the value has changed
-                cordovaFetch("http://www.onsgrocery.com/code/push-test/write-reg-id.php",{method:'POST',body:data.registrationId,mode: 'cors'}).then(function(data){ return data.json()}).then(function(resp){alert(resp)});
-            }
+        // push.on('registration', function(data) {
+        //     console.log('registration event: ' + data.registrationId);
+        //     localStorage.clear();
+        //     var oldRegId = localStorage.getItem('registrationId');
+        //     if (oldRegId !== data.registrationId) {
+        //         // Save new registration ID
+        //         localStorage.setItem('registrationId', data.registrationId);
+        //         alert("Inside if  ",data.registrationId);
+        //         // Post registrationId to your app server as the value has changed
+        //         cordovaFetch("http://www.onsgrocery.com/code/push-test/write-reg-id.php",{method:'POST',body:data.registrationId,mode: 'cors'}).then(function(data){ return data.json()}).then(function(resp){alert(resp)});
+        //     }
 
+        //     var parentElement = document.getElementById('registration');
+        //     var listeningElement = parentElement.querySelector('.waiting');
+        //     var receivedElement = parentElement.querySelector('.received');
+
+        //     listeningElement.setAttribute('style', 'display:none;');
+        //     receivedElement.setAttribute('style', 'display:block;');
+        //     document.getElementById("gcm_id").innerHTML = data.registrationId;
+        // });
+        push.subscribe('allDevices', function() {
+            alert('successfully subscribed to topic allDevices');
             var parentElement = document.getElementById('registration');
             var listeningElement = parentElement.querySelector('.waiting');
             var receivedElement = parentElement.querySelector('.received');
@@ -72,12 +82,9 @@ var app = {
             listeningElement.setAttribute('style', 'display:none;');
             receivedElement.setAttribute('style', 'display:block;');
             document.getElementById("gcm_id").innerHTML = data.registrationId;
-        });
-        // push.subscribe('allDevices', function() {
-        //     alert('successfully subscribed to topic allDevices');
-        //  }, function(e) {
-        //     console.log('Error: ' + e);
-        //  });
+         }, function(e) {
+            console.log('Error: ' + e);
+         });
         push.on('error', function(e) {
             console.log("push error = " + e.message);
         });
