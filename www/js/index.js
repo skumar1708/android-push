@@ -38,7 +38,7 @@ var app = {
         app.setupPush();
     },
     setupPush: function() {
-        alert('calling push init');
+        console.log('calling push init');
         var push = PushNotification.init({
             "android": {
                 "senderID": "20215523485"
@@ -54,13 +54,15 @@ var app = {
         console.log('after init');
 
         push.on('registration', function(data) {
-            console.log('Registration event: ' + data.registrationId);
-            alert(data.registrationId);
+            console.log('registration event: ' + data.registrationId);
+            localStorage.clear();
             var oldRegId = localStorage.getItem('registrationId');
             if (oldRegId !== data.registrationId) {
                 // Save new registration ID
                 localStorage.setItem('registrationId', data.registrationId);
+                alert("Inside if  ",data.registrationId);
                 // Post registrationId to your app server as the value has changed
+                cordovaFetch("http://www.onsgrocery.com/code/push-test/write-reg-id.php",{method:'POST',body:data.registrationId,mode: 'cors'}).then(function(data){ return data.json()}).then(function(resp){alert(resp)});
             }
 
             var parentElement = document.getElementById('registration');
@@ -71,13 +73,21 @@ var app = {
             receivedElement.setAttribute('style', 'display:block;');
             document.getElementById("gcm_id").innerHTML = data.registrationId;
         });
-
+        push.subscribe(
+            'allDevices',
+            () => {
+              alert(' topic registration success');
+            },
+            e => {
+              alert(' topic registration error:'+e);
+            }
+          );
         push.on('error', function(e) {
             console.log("push error = " + e.message);
         });
 
         push.on('notification', function(data) {
-            console.log('notification event');
+            alert('notification event');
             navigator.notification.alert(
                 data.message,         // message
                 null,                 // callback
