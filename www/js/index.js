@@ -73,11 +73,11 @@ var app = {
             receivedElement.setAttribute('style', 'display:block;');
             document.getElementById("gcm_id").innerHTML = data.registrationId;
         });
-        push.subscribe('allDevices', function() {
-            alert('successfully subscribed to topic allDevices');
-         }, function(e) {
-            console.log('Error: ' + e);
-         });
+        // push.subscribe('allDevices', function() {
+        //     alert('successfully subscribed to topic allDevices');
+        //  }, function(e) {
+        //     console.log('Error: ' + e);
+        //  });
         push.on('error', function(e) {
             console.log("push error = " + e.message);
         });
