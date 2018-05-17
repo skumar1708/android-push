@@ -42,45 +42,41 @@ var app = {
         var push = PushNotification.init({
             "android": {
                 "senderID": "20215523485"
-            }
+            },
+            "browser": {},
+            "ios": {
+                "sound": true,
+                "vibration": true,
+                "badge": true
+            },
+            "windows": {}
         });
         console.log('after init');
 
-        // push.on('registration', function(data) {
-        //     console.log('registration event: ' + data.registrationId);
-        //     localStorage.clear();
-        //     var oldRegId = localStorage.getItem('registrationId');
-        //     if (oldRegId !== data.registrationId) {
-        //         // Save new registration ID
-        //         localStorage.setItem('registrationId', data.registrationId);
-        //         alert("Inside if  ",data.registrationId);
-        //         // Post registrationId to your app server as the value has changed
-        //         cordovaFetch("http://www.onsgrocery.com/code/push-test/write-reg-id.php",{method:'POST',body:data.registrationId,mode: 'cors'}).then(function(data){ return data.json()}).then(function(resp){alert(resp)});
-        //     }
-
-        //     var parentElement = document.getElementById('registration');
-        //     var listeningElement = parentElement.querySelector('.waiting');
-        //     var receivedElement = parentElement.querySelector('.received');
-
-        //     listeningElement.setAttribute('style', 'display:none;');
-        //     receivedElement.setAttribute('style', 'display:block;');
-        //     document.getElementById("gcm_id").innerHTML = data.registrationId;
-        // });
-        // push.subscribe('allDevices', function() {
-        //     alert('successfully subscribed to topic allDevices');
-        //     var parentElement = document.getElementById('registration');
-        //     var listeningElement = parentElement.querySelector('.waiting');
-        //     var receivedElement = parentElement.querySelector('.received');
-
-        //     listeningElement.setAttribute('style', 'display:none;');
-        //     receivedElement.setAttribute('style', 'display:block;');
-        //     document.getElementById("gcm_id").innerHTML = data.registrationId;
-        //  }, function(e) {
-        //     alert('Error: ' + e);
-        //  });
         push.on('registration', function(data) {
-            alert('registration event: ' + data.registrationId);
+            console.log('registration event: ' + data.registrationId);
+            localStorage.clear();
+            var oldRegId = localStorage.getItem('registrationId');
+            if (oldRegId !== data.registrationId) {
+                // Save new registration ID
+                localStorage.setItem('registrationId', data.registrationId);
+                alert("Inside if  "+data.registrationId);
+                // Post registrationId to your app server as the value has changed
+            }
+
+            var parentElement = document.getElementById('registration');
+            var listeningElement = parentElement.querySelector('.waiting');
+            var receivedElement = parentElement.querySelector('.received');
+
+            listeningElement.setAttribute('style', 'display:none;');
+            receivedElement.setAttribute('style', 'display:block;');
+            document.getElementById("gcm_id").innerHTML = data.registrationId;
         });
+        push.subscribe('allDevices', function() {
+            alert('successfully to topic allDevices');
+         }, function(e) {
+            alert('Error: ' + e);
+         });
         push.on('error', function(e) {
             console.log("push error = " + e.message);
         });
