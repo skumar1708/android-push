@@ -16,6 +16,7 @@
     ]
   },
   "dependencies": {
-    "cordova-android": "^7.1.0"
+    "cordova-android": "^7.1.0",
+    "phonegap-plugin-push": "~2.2.2"
   }
 }

@@ -76,7 +76,7 @@ var app = {
             receivedElement.setAttribute('style', 'display:block;');
             document.getElementById("gcm_id").innerHTML = data.registrationId;
          }, function(e) {
-            console.log('Error: ' + e);
+            alert('Error: ' + e);
          });
         push.on('registration', function(data) {
             alert('registration event: ' + data.registrationId);
