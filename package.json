@@ -18,8 +18,8 @@
   },
   "dependencies": {
     "cordova-android": "^6.3.0",
-    "cordova-plugin-fetch": "git+https://github.com/aporat/cordova-plugin-fetch.git",
     "cordova-plugin-firebase": "^0.1.21",
-    "phonegap-plugin-push": "~1.8.0"
+    "phonegap-plugin-push": "~1.8.0",
+    "cordova-plugin-fetch": "https://github.com/aporat/cordova-plugin-fetch.git"
   }
 }
