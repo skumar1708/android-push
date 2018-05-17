@@ -15,6 +15,9 @@
     },
     "cordova-plugin-firebase": {
       "PACKAGE_NAME": "org.myapp.sample"
+    },
+    "cordova-plugin-fetch": {
+      "PACKAGE_NAME": "org.myapp.sample"
     }
   },
   "dependent_plugins": {}

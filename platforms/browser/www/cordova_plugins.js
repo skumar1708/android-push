@@ -23,6 +23,14 @@ module.exports = [
         "clobbers": [
             "FirebasePlugin"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-fetch/www/fetch.js",
+        "id": "cordova-plugin-fetch.FetchPlugin",
+        "pluginId": "cordova-plugin-fetch",
+        "clobbers": [
+            "cordovaFetch"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -30,7 +38,8 @@ module.exports.metadata =
 {
     "cordova-plugin-whitelist": "1.3.3",
     "phonegap-plugin-push": "2.2.2",
-    "cordova-plugin-firebase": "1.0.5"
+    "cordova-plugin-firebase": "1.0.5",
+    "cordova-plugin-fetch": "0.1.0"
 }
 // BOTTOM OF METADATA
 });
